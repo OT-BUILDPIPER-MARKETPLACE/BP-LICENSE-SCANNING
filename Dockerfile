@@ -21,6 +21,8 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN apt-get update \
- && pip install scancode-toolkit
+ && pip install scancode-toolkit \
+ && pip install jq
+ 
 ENV filename=somevalue.html
 ENTRYPOINT ["./script.sh"]
