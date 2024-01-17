@@ -4,7 +4,7 @@ ENV PYTHONUNBUFFERED 1
 # Python settings: do not write pyc files
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV SLEEP_DURATION 0s
-COPY script.sh .
+COPY . .
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
        bzip2 \
