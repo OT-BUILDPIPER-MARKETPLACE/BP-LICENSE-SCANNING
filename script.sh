@@ -10,7 +10,7 @@ logInfoMessage "Scanning the code available at [$WORKSPACE] and mounted at [$COD
 code="$WORKSPACE/$CODEBASE_DIR"
 sleep $SLEEP_DURATION
 cd  $code
-#logInfoMessage "Received arguments: [$@]"
+logInfoMessage "Received arguments: [$@]"
 
 # Perform license scanning using scancode
 scancode -cl --license --html $filename .
