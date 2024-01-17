@@ -7,9 +7,9 @@ source file-functions.sh
 source aws-functions.sh
 
 logInfoMessage "Scanning the code available at [$WORKSPACE] and mounted at [$CODEBASE_DIR]"
+code="$WORKSPACE/$CODEBASE_DIR"
 sleep $SLEEP_DURATION
-cd  $WORKSPACE
-#cd $WORKSPACE
+cd  $code
 logInfoMessage "Received arguments: [$@]"
 
 # Perform license scanning using scancode
