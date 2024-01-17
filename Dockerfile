@@ -22,4 +22,5 @@ RUN apt-get update \
 
 RUN apt-get update \
  && pip install scancode-toolkit
+ENV filename=somevalue.html
 ENTRYPOINT ["./script.sh"]
