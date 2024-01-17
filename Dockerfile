@@ -5,7 +5,9 @@ ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV SLEEP_DURATION 0s
 COPY . .
+COPY BP-BASE-SHELL-STEPS .
 RUN apt-get update \
+    apt install jq -y
  && apt-get install -y --no-install-recommends \
        bzip2 \
        xz-utils \
