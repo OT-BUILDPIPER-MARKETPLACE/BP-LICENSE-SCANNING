@@ -7,10 +7,6 @@ ENV SLEEP_DURATION 0s
 COPY . .
 COPY BP-BASE-SHELL-STEPS .
 RUN apt-get update \
- && pip install scancode-toolkit \
- && pip install jq \
- && apt install jq -y
-RUN apt-get update \
  && apt-get install -y --no-install-recommends \
        bzip2 \
        xz-utils \
@@ -22,9 +18,10 @@ RUN apt-get update \
        libgcrypt20 \
        libpopt0 \
        libzstd1 \
+       jq \
  && apt-get clean \
- && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+ && pip install scancode-toolkit
  
 ENV filename=somevalue.html
 ENTRYPOINT ["./script.sh"]
