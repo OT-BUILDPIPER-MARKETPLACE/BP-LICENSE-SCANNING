@@ -22,6 +22,6 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
  && pip install scancode-toolkit
- ENV ACTIVITY_SUB_TASK_CODE SCANCODE_EXECUTE
+ENV ACTIVITY_SUB_TASK_CODE SCANCODE_EXECUTE
 ENV filename=somevalue.html
 ENTRYPOINT ["./script.sh"]
