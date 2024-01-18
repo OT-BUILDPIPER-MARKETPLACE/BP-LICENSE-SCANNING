@@ -14,7 +14,7 @@ cd  $code
 #logInfoMessage "Received arguments: [$@]"
 # Perform license scanning using scancode
 
-scancode -cl --license --html $filename .
+scancode -cl --license --html $OUTPUT_ARG .
 # scancode -cl --license --html /path/to/port_name.html .
 if [ $? -eq 0 ]
 then
