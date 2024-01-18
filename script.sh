@@ -16,15 +16,14 @@ cd  $code
 
 scancode -cl --license --html $OUTPUT_ARG .
 # scancode -cl --license --html /path/to/port_name.html .
-if [ $? -eq 0 ]
+if [ $? -eq 0 ];
 then
 # Check the exit status of scancode
 #if scancode -cl --license --html "$filename" .; then
   generateOutput scancode_execute true "License scan succeeded!"
 #  logInfoMessage "License scan succeeded!"
   echo "License scan succeeded!" 
-elif
-then
+else
   generateOutput scancode_execute false "License scan failed!"
 #  logErrorMessage "License scan failed!"
   echo "Build unsuccessful"
