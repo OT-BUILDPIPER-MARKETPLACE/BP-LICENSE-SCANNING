@@ -20,11 +20,11 @@ if [ $? -eq 0 ];
 then
 # Check the exit status of scancode
 #if scancode -cl --license --html "$filename" .; then
-  generateOutput scancode_execute true "License scan succeeded!"
+  generateOutput scancode_execute false "License scan succeeded!"
 #  logInfoMessage "License scan succeeded!"
   echo "License scan succeeded!" 
 else
-  generateOutput scancode_execute false "License scan failed!"
+#  generateOutput scancode_execute false "License scan failed!"
 #  logErrorMessage "License scan failed!"
   echo "Build unsuccessful"
   exit 1
