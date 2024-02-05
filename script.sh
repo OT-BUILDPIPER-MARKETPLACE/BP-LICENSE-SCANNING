@@ -1,30 +1,33 @@
 #!/bin/bash
-
 source functions.sh
 source log-functions.sh
-source str-functions.sh
-source file-functions.sh
-source aws-functions.sh
+cd  "${WORKSPACE}"/"${CODEBASE_DIR}"
 
-logInfoMessage "Scanning the code available at [$WORKSPACE] and mounted at [$CODEBASE_DIR]"
-code="$WORKSPACE/$CODEBASE_DIR"
-sleep $SLEEP_DURATION
-cd  $code
-
-logInfoMessage "Received arguments: [$@]"
-
-scancode -cl --license --html $OUTPUT_ARG .
-# scancode -cl --license --html /path/to/port_name.html .
-if [ $? -eq 0 ];
-then
-# Check the exit status of scancode
-#if scancode -cl --license --html "$filename" .; then
-  generateOutput scancode_execute true "License scan succeeded!"
-  logInfoMessage "License scan succeeded!"
-  echo "License scan succeeded!"
+if [ -d "reports" ]; then
+    true
 else
-  generateOutput scancode_execute false "License scan failed!"
+    mkdir reports
+fi
+STATUS=0
+
+logInfoMessage "Scanning the code available at ${WORKSPACE}/${CODEBASE_DIR} "
+sleep  "$SLEEP_DURATION"
+logInfoMessage "Executing command"
+logInfoMessage "scancode -cl --license --html reports/${OUTPUT_ARG} ${WORKSPACE}/${CODEBASE_DIR}"
+scancode -cl --license --html reports/"${OUTPUT_ARG}" "${WORKSPACE}"/"${CODEBASE_DIR}"
+STATUS=$(echo $?)
+if [ -s "reports/${OUTPUT_ARG}" ]; then
+   cat reports/"${OUTPUT_ARG}"
+else
+    echo "NO LICENSE FOUND IN SOURCE CODE "
+fi
+
+if [ "$STATUS" -eq 0 ]
+then
+  logInfoMessage "Congratulations license scan succeeded!!!"
+  generateOutput "${ACTIVITY_SUB_TASK_CODE}" true "Congratulations License scan succeeded!"
+else
   logErrorMessage "License scan failed!"
-  echo "Build unsuccessful"
+  generateOutput "${ACTIVITY_SUB_TASK_CODE}" true "Please check License scan failed!"
   exit 1
 fi
