@@ -3,9 +3,10 @@ FROM --platform=linux/amd64 python:3.8-slim-buster
 ENV PYTHONUNBUFFERED 1
 # Python settings: do not write pyc files
 ENV PYTHONDONTWRITEBYTECODE 1
-ENV SLEEP_DURATION 0s
+ENV SLEEP_DURATION 5s
 COPY script.sh .
-COPY BP-BASE-SHELL-STEPS .
+COPY BP-BASE-SHELL-STEPS/functions.sh .
+COPY BP-BASE-SHELL-STEPS/log-functions.sh .
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
        bzip2 \
