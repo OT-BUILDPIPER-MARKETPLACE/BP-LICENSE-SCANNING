@@ -5,8 +5,7 @@ ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV SLEEP_DURATION 5s
 COPY script.sh .
-COPY functions.sh .
-COPY log-functions.sh .
+ADD BP-BASE-SHELL-STEPS /opt/buildpiper/shell-functions/
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
        bzip2 \
