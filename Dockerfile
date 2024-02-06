@@ -5,8 +5,8 @@ ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV SLEEP_DURATION 5s
 COPY script.sh .
-COPY BP-BASE-SHELL-STEPS/functions.sh .
-COPY BP-BASE-SHELL-STEPS/log-functions.sh .
+COPY functions.sh .
+COPY log-functions.sh .
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
        bzip2 \
@@ -25,5 +25,5 @@ RUN apt-get update \
  && pip install scancode-toolkit
 ENV ACTIVITY_SUB_TASK_CODE SCANCODE_EXECUTE
 ENV OUTPUT_ARG scancode.html
-ENV FORMAT --yaml
+ENV FORMAT_ARG --yaml
 ENTRYPOINT ["./script.sh"]
