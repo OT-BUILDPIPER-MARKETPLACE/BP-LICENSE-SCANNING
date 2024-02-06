@@ -1,6 +1,6 @@
 #!/bin/bash
-source functions.sh
-source log-functions.sh
+source /opt/buildpiper/shell-functions/functions.sh
+source /opt/buildpiper/shell-functions/log-functions.sh
 CODEBASE_LOCATION="${WORKSPACE}"/"${CODEBASE_DIR}"
 logInfoMessage "I'll do processing at [$CODEBASE_LOCATION]"
 cd "${CODEBASE_LOCATION}"
