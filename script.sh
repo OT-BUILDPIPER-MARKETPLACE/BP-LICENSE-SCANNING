@@ -20,11 +20,6 @@ scancode -q ${FORMAT_ARG} - --license "${WORKSPACE}"/"${CODEBASE_DIR}"
 logInfoMessage "scancode -cl -q --license --json reports/${OUTPUT_ARG} ${WORKSPACE}/${CODEBASE_DIR}"
 scancode -cl -q --license --json reports/"${OUTPUT_ARG}" "${WORKSPACE}"/"${CODEBASE_DIR}"
 STATUS=$(echo $?)
-if [ -s "reports/${OUTPUT_ARG}" ]; then
-   cat reports/"${OUTPUT_ARG}"
-else
-    echo "NO LICENSE FOUND IN SOURCE CODE "
-fi
 
 if [ "$STATUS" -eq 0 ]
 then
