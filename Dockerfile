@@ -1,8 +1,4 @@
 FROM --platform=linux/amd64 python:3.8-slim-buster
-# Python settings: Force unbuffered stdout and stderr (i.e. they are flushed to terminal immediately)
-ENV PYTHONUNBUFFERED 1
-# Python settings: do not write pyc files
-ENV PYTHONDONTWRITEBYTECODE 1
 ENV SLEEP_DURATION 5s
 COPY script.sh .
 ADD BP-BASE-SHELL-STEPS /opt/buildpiper/shell-functions/
