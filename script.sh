@@ -19,14 +19,6 @@ scancode -q ${FORMAT_ARG} - --license "${WORKSPACE}"/"${CODEBASE_DIR}"
 
 logInfoMessage "scancode -cl -q --license --json reports/${OUTPUT_ARG} ${WORKSPACE}/${CODEBASE_DIR}"
 scancode -cl -q --license --json reports/"${OUTPUT_ARG}" "${WORKSPACE}"/"${CODEBASE_DIR}"
-STATUS=$(echo $?)
+TASK_STATUS=$(echo $?)
 
-if [ "$STATUS" -eq 0 ]
-then
-  logInfoMessage "Congratulations license scan succeeded!!!"
-  generateOutput "${ACTIVITY_SUB_TASK_CODE}" true "Congratulations License scan succeeded!"
-else
-  logErrorMessage "License scan failed!"
-  generateOutput "${ACTIVITY_SUB_TASK_CODE}" true "Please check License scan failed!"
-  exit 1
-fi
+saveTaskStatus ${TASK_STATUS} ${ACTIVITY_SUB_TASK_CODE}
