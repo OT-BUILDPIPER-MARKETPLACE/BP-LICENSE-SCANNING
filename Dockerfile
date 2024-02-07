@@ -23,6 +23,6 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
  && pip install scancode-toolkit
 ENV ACTIVITY_SUB_TASK_CODE SCANCODE_EXECUTE
-ENV OUTPUT_ARG scancode.html
+ENV OUTPUT_ARG scancode.json
 ENV FORMAT_ARG --yaml
 ENTRYPOINT ["./script.sh"]
